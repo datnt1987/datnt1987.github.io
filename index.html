@@ -18,11 +18,16 @@
         alert('Image local ids: ' + res.data.localIds)
       });
     }
+
+    function getImageData() {
+      var stringToReplace = "/storage/emulated/0/Pic.jpg";
+      stringToReplace = stringToReplace.replace('data:base64,', 'data:image\/jpeg;base64,');
+    }
   </script>
 
-  <button type="openCamera" onclick="openCamera()">open camera1</button>
+  <button type="openCamera" onclick="openCamera()">open camera</button>
   <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
-  <img src="/storage/emulated/0/Pic.jpg" />
+  <img src="getImageData()" />
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
