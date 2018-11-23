@@ -1,9 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
-<h1>My First Heading</h1>
-<p>Hello Duke!</p>
+  <script>
+    function openCamera() {
+      window.ZaloPay.openCamera(function (res) {
+        alert('takenID: ' + res.data.takenURI);
+        // img.src = res.data.takenURI;
+        // img.src = 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png';
 
+      });
+    }
+
+    function chooseImage() {
+      window.ZaloPay.chooseImage(function (res) {
+        alert('Image local ids: ' + res.data.localIds)
+      });
+    }
+  </script>
+
+  <button type="openCamera" onclick="openCamera()">open camera</button>
+
+  <script src="js/zalopay.js"></script>
+  <script src="js/zalopay-internal.js"></script>
 </body>
+
 </html>
