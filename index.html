@@ -5,11 +5,15 @@
 
   <script>
     var pic = document.getElementById('open_camera');
+    var result;
     function openCamera() {
       window.ZaloPay.openCamera(function (res) {
         alert('takenID: ' + res.data.takenURI);
-        loadBlobImage(res.data.takenURI);
-        pic.src = res.data.takenURI;
+        // loadBlobImage(res.data.takenURI);
+        // pic.src = res.data.takenURI;
+        var stringToReplace = reader.result;
+        stringToReplace = stringToReplace.replace('data:base64,', 'data:image\/jpeg;base64,');
+        pic.src = stringToReplace;
         // img.src = 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png';
 
       });
@@ -18,8 +22,6 @@
     function chooseImage() {
       window.ZaloPay.chooseImage(function (res) {
         alert('Image local ids: ' + res.data.localIds)
-        var img = document.getElementById("open_camera");
-        img.src
       });
     }
 
@@ -28,7 +30,7 @@
       stringToReplace = stringToReplace.replace('data:base64,', 'data:image\/jpeg;base64,');
     }
 
-    
+
 
     function loadBlobImage(url) {
       var xhr = new XMLHttpRequest()
@@ -47,10 +49,10 @@
     }
   </script>
 
-  <button type="openCamera" onclick="openCamera()">open camera</button>
+  <button type="openCamera" onclick="openCamera()">open camera1</button>
   <button type="chooseImage" onclick="chooseImage()">choose image</button>
   <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
-  <img id="open_camera" alt="" width="1000" height="333" />
+  <img id="open_camera" alt="" width="500" height="150" />
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
