@@ -7,6 +7,13 @@
     function openCamera() {
       window.ZaloPay.openCamera(function (res) {
         alert('takenID: ' + res.data.takenURI);
+        function LoadImages() {
+          searchPic = new Image();
+          searchPic.onload = function () {
+            document["open_camera"].src = res.data.takenURI;
+          }
+          searchPic.src = https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png; // This is correct and the path is correct
+        }
         // img.src = res.data.takenURI;
         // img.src = 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png';
 
@@ -27,10 +34,10 @@
     }
   </script>
 
-  <button type="openCamera" onclick="openCamera()">open camera 1</button>
+  <button type="openCamera" onclick="openCamera()">open camera</button>
   <button type="chooseImage" onclick="chooseImage()">choose image</button>
-  <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" />
-  <!-- <img id="open_camera" /> -->
+  <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
+  <img id="open_camera" />
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
