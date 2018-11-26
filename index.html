@@ -7,13 +7,7 @@
     function openCamera() {
       window.ZaloPay.openCamera(function (res) {
         alert('takenID: ' + res.data.takenURI);
-        function LoadImages() {
-          searchPic = new Image();
-          searchPic.onload = function () {
-            document["open_camera"].src = res.data.takenURI;
-          }
-          searchPic.src = https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png; // This is correct and the path is correct
-        }
+        loadBlobImage(res.data.takenURI);
         // img.src = res.data.takenURI;
         // img.src = 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png';
 
@@ -31,6 +25,22 @@
     function getCameraImgResult() {
       var stringToReplace = reader.result;
       stringToReplace = stringToReplace.replace('data:base64,', 'data:image\/jpeg;base64,');
+    }
+
+    function loadBlobImage(url) {
+      var xhr = new XMLHttpRequest()
+      xhr.responseType = 'blob';
+      xhr.onreadystatechange = function (event) {
+        if (event.target.readyState == 4) {
+          if (event.target.status == 200 || event.target.status == 0) {
+            var blob = this.response;
+          } else {
+            console.error('Unable to download the blob');
+          }
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
     }
   </script>
 
