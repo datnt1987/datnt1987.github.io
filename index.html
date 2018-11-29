@@ -9,13 +9,7 @@
     function openCamera() {
       window.ZaloPay.openCamera(function (res) {
         alert('takenID: ' + res.data.takenURI);
-        // loadBlobImage(res.data.takenURI);
-        // pic.src = res.data.takenURI;
-        var stringToReplace = reader.result;
-        stringToReplace = stringToReplace.replace('data:base64,', 'data:image\/jpeg;base64,');
-        pic.src = stringToReplace;
-        // img.src = 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png';
-
+        document.getElementById('open_camera').src = res.data.takenURI;
       });
     }
 
@@ -51,10 +45,11 @@
 
   <button type="openCamera" onclick="openCamera()">open camera1</button>
   <button type="chooseImage" onclick="chooseImage()">choose image</button>
+  <img id="open_camera" width="500px" height="500px" />
   <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
-  <img id="open_camera" alt="" width="500" height="150" />
+  
 
-  <script src="js/zalopay.js"></script>
+<script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
 </body>
 
