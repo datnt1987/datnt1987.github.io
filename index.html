@@ -41,15 +41,25 @@
       xhr.open('GET', url, true);
       xhr.send();
     }
+
+    function share() {
+      var opt = {
+        type: 1,
+        caption: 'caption string',
+        content: 'content string'
+      };
+      window.ZaloPay.share(opt, null);
+    }
   </script>
 
-  <button type="openCamera" onclick="openCamera()">open camera1</button>
+  <!-- <button type="openCamera" onclick="openCamera()">open camera1</button>
   <button type="chooseImage" onclick="chooseImage()">choose image</button>
-  <img id="open_camera" width="500px" height="500px" />
+  <img id="open_camera" width="500px" height="500px" /> -->
   <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
-  
+  <button type="share" onclick="share()">Show share button</button>
 
-<script src="js/zalopay.js"></script>
+
+  <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
 </body>
 
