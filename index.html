@@ -14,6 +14,35 @@
         }
       )
     }
+
+    function scan() {
+      var opt = {
+    desc: 'scanQRCode desc',
+    needResult: 1, // 0 by default, with the scanning result processed by ZaloPay. The scanning result is directly returned if it is 1.
+    scanType: ["qrCode", "barCode"], // Scanning type, including QR code or bar code. Both by default.
+    success: function (res) {
+      alert("scan result: " + res.data.resultStr);
+    }
+  };
+  window.ZaloPay.scanQRCode(opt);
+    }
+
+function openCamera() {
+  window.ZaloPay.openCamera(function (res) {
+    alert('takenID: ' + res.data.takenURI);
+    document.getElementById('open_camera').src = res.data.takenURI;
+    // img.src = res.data.takenURI;
+    // img.src = 'https://cdn.sstatic.net/stackexxchange/img/logos/so/so-icon.png';
+
+  });
+}
+
+function chooseImage() {
+  window.ZaloPay.chooseImage(function (res) {
+    alert('Image local ids: ' + res.data.localIds)
+  });
+}
+
   </script>
 
   <!-- <button type="openCamera" onclick="openCamera()">open camera1</button>
@@ -21,6 +50,9 @@
   <img id="open_camera" width="500px" height="500px" /> -->
   <!-- <img src="file:///vn.com.vng.zalopay.sb1.provider/zpimages/image-20181123_16:01:33.jpg" /> -->
   <button type="share" onclick="share()">Share</button>
+  <button type="share" onclick="scan">Scan</button>
+  <button type="share" onclick="openCamera()">Camera</button>
+  <button type="share" onclick="chooseImage()">gallery</button>
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
