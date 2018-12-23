@@ -43,6 +43,14 @@ function chooseImage() {
   });
 }
 
+function launch() {
+  var opt = {
+    internalApp: 362
+  };
+
+  window.ZaloPay.promotionEvent(opt);
+}
+
   </script>
 
   <!-- <button type="openCamera" onclick="openCamera()">open camera1</button>
@@ -53,6 +61,7 @@ function chooseImage() {
   <button type="share" onclick="scan">Scan</button>
   <button type="share" onclick="openCamera()">Camera</button>
   <button type="share" onclick="chooseImage()">gallery</button>
+  <button type="share" onclick="launch()">launch</button>
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
