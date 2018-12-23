@@ -44,11 +44,14 @@ function chooseImage() {
 }
 
 function launch() {
-  var opt = {
-    internalApp: 362
-  };
-
-  window.ZaloPay.promotionEvent(opt);
+  window.ZaloPay.call(
+        'promotionEvent',
+        {
+          internalApp: 362,
+          campaignId: 4000,
+          alternateUrl: "https://www.zalopay.com.vn"
+        }
+      )
 }
 
 function showLoading() {
