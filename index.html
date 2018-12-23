@@ -19,7 +19,7 @@
       window.ZaloPay.call(
         'scanQRCode',
         {
-          desc: 1,
+          desc: "desc",
           needResult: 1,
           scanType: ["qrCode", "barCode"],
           success: function (res) {
@@ -74,7 +74,6 @@ function showLoading() {
   <button onclick="openCamera()">Camera</button>
   <button onclick="chooseImage()">gallery</button>
   <button onclick="launch()">launch</button>
-  <button onclick="showLoading()">loading</button>
 
   <script src="js/zalopay.js"></script>
   <script src="js/zalopay-internal.js"></script>
