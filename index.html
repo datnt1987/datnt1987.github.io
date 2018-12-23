@@ -16,14 +16,19 @@
     }
 
     function scan() {
-      var opt = {
-    desc: 'scanQRCode desc',
-    needResult: 1, // 0 by default, with the scanning result processed by ZaloPay. The scanning result is directly returned if it is 1.
-    scanType: ["qrCode", "barCode"], // Scanning type, including QR code or bar code. Both by default.
-    success: function (res) {
+      window.ZaloPay.call(
+        'scanQRCode',
+        {
+          desc: 1,
+          needResult: 1,
+          scanType: ["qrCode", "barCode"],
+          success: function (res) {
       alert("scan result: " + res.data.resultStr);
     }
+        }
+      )
   };
+  
   window.ZaloPay.scanQRCode(opt);
     }
 
